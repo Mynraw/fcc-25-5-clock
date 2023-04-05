@@ -1,7 +1,8 @@
-import {useState, useEffect} from "react";
+import {useEffect} from "react";
+import {CounterContext, useContext} from "@/context/CounterContext";
 
 const SessionCard = (): JSX.Element => {
-    const [counterInterval, setCounterInterval] = useState({countLength: 25, seconds: 1500, timer: ""});
+    const {counterInterval, setCounterInterval} = useContext(CounterContext);
 
     const handleInterval = (): void => {
         // Convert the current time in minutes to seconds
