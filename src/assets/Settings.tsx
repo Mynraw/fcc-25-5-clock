@@ -1,3 +1,4 @@
+import {CounterContext, useContext} from "@/context/CounterContext";
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 
 const counterSettings: string[] = [
@@ -6,16 +7,28 @@ const counterSettings: string[] = [
 ];
 
 const Settings = (): JSX.Element => {
+    const {counterInterval, setCounterInterval} = useContext(CounterContext);
+
+    const increaseBreak = () => {
+        setCounterInterval(...counterInterval )
+    }
     return <div className="flex items-center justify-evenly text-center">
-        {counterSettings.map((setting: string, index: number) =>
-            <div key={index}>
-            <h2 className="text-3xl font-[600] capitalize">{setting}</h2>
+            <div>
+            <h2 className="text-3xl font-[600] capitalize">break length</h2>
             <div className="flex items-center justify-center gap-x-3 text-2xl">
                 <button type="button"><FaArrowUp /></button>
-                <span>{index}</span>
+                <span>{}</span>
                 <button type="button"><FaArrowDown /></button>
             </div>
-        </div>)}
+        </div>
+        <div>
+            <h2 className="text-3xl font-[600] capitalize">session length</h2>
+            <div className="flex items-center justify-center gap-x-3 text-2xl">
+                <button type="button"><FaArrowUp /></button>
+                <span>{}</span>
+                <button type="button"><FaArrowDown /></button>
+            </div>
+        </div>
     </div>
 }
 
