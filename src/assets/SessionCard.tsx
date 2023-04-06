@@ -14,7 +14,7 @@ const SessionCard = (): JSX.Element => {
 
     useEffect(() => {
         handleInterval();
-        const goInterval = setInterval(() => {
+        const goInterval:NodeJS.Timer = setInterval(():void => {
             if (counterInterval.seconds > 0) {
                 setCounterInterval({...counterInterval, seconds: (counterInterval.seconds - 1)});
             } else {
