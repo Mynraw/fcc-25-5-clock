@@ -1,28 +1,9 @@
-import {useEffect} from "react";
 import {CounterContext, useContext} from "@/context/CounterContext";
 import {FaPlay, FaPause} from "react-icons/fa"
 import {FiRefreshCw} from "react-icons/fi"
 
 const Controls = (): JSX.Element => {
     const {counterInterval, setCounterInterval} = useContext(CounterContext);
-
-
-    // const goInterval:NodeJS.Timer = setInterval(():void => {
-    //     if (counterInterval.seconds > 0) {
-    //         setCounterInterval({...counterInterval, seconds: (counterInterval.seconds - 1)});
-    //     } else {
-    //         clearInterval(goInterval);
-    //     }
-    //
-    // }, 1000)
-
-    // return (): void=> {
-    //     clearInterval(goInterval);
-    // };
-
-    // useEffect(() => {
-    //     handleInterval();
-    // }, [counterInterval.countLength]);
 
     const startSession = (): void => {
         setCounterInterval({...counterInterval, isStopped: false});
@@ -33,7 +14,7 @@ const Controls = (): JSX.Element => {
     }
 
     const resetSession = (): void => {
-        setCounterInterval({...counterInterval, countLength: 25, breakLength: 5});
+        setCounterInterval({...counterInterval, countLength: 25, breakLength: 5, isStopped: true});
     }
 
     return <div className="text-4xl text-center py-8 flex items-center justify-center">
