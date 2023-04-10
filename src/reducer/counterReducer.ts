@@ -3,6 +3,10 @@ type Action =
     | { type: 'DECREASE_BREAK' }
     | { type: 'INCREASE_SESSION' }
     | { type: 'DECREASE_SESSION' }
+    | { type: 'HANDLE_INTERVAL' }
+    | { type: 'PAUSE_SESSION' }
+    | { type: 'RESET_SESSION' }
+    | { type: 'START_SESSION' }
 
 export const counterReducer = (state: any, action: Action) => {
     switch (action.type) {
@@ -11,9 +15,15 @@ export const counterReducer = (state: any, action: Action) => {
         case 'DECREASE_BREAK':
             return {...state, breakLength: state.breakLength - 1};
         case 'INCREASE_SESSION':
-            return {...state, countLength: state.countLength + 1, timer: state.timer + 60};
+            return {...state, countLength: state.countLength + 1, seconds: state.seconds + 60, timer: Math.floor(state.seconds / 60) + ':' + ('0' + Math.floor(state.seconds % 60)).slice(-2)};
         case 'DECREASE_SESSION':
-            return {...state, countLength: state.countLength - 1, timer: state.timer - 60};
+            return {...state, countLength: state.countLength - 1, seconds: state.seconds - 60, timer: Math.floor(state.seconds / 60) + ':' + ('0' + Math.floor(state.seconds % 60)).slice(-2)};
+        case 'PAUSE_SESSION':
+            return {...state, isStopped: !state.isStopped};
+        case 'RESET_SESSION':
+            return {...state, breakLength: 5, countLength: 25, seconds: 1500, timer: '25:00'};
+        case 'START_SESSION':
+            return {...state, seconds: state.seconds - 1, timer: Math.floor(state.seconds / 60) + ':' + ('0' + Math.floor(state.seconds % 60)).slice(-2)};
         default:
             throw Error("No such action.");
     }

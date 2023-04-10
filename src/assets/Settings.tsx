@@ -1,28 +1,8 @@
-import {useReducer} from "react";
 import {CounterContext, useContext} from "@/context/CounterContext";
-import {counterReducer} from "@/reducer/counterReducer";
 import {FaArrowUp, FaArrowDown} from "react-icons/fa"
 
 const Settings = (): JSX.Element => {
-    const {counterInterval, increaseBreak, decreaseBreak, increaseSession, decreaseSession, state} = useContext(CounterContext);
-    // const [state, dispatch] = useReducer(counterReducer, counterInterval);
-
-
-    // const increaseBreak = () => {
-    //     counterInterval.isStopped && dispatch({type: "INCREASE_BREAK"});
-    // }
-
-    // const decreaseBreak = () => {
-    //     counterInterval.isStopped && dispatch({type: "DECREASE_BREAK"});
-    // }
-    //
-    // const increaseSession = () => {
-    //     counterInterval.isStopped && dispatch({type: "INCREASE_SESSION"});
-    // }
-    //
-    // const decreaseSession = () => {
-    //     counterInterval.isStopped && dispatch({type: "DECREASE_SESSION"});
-    // }
+    const {increaseBreak, decreaseBreak, increaseSession, decreaseSession, state} = useContext(CounterContext);
 
 
     return <div className="flex items-center justify-evenly text-center text-3xl">
