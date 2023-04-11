@@ -8,35 +8,38 @@ import Controls from "@/assets/Controls";
 
 const CounterClock = (): JSX.Element => {
     // Global states for Context API
-    const [counterInterval, setCounterInterval] = useState({countLength: 25, breakLength: 5, seconds: 1500, timer: "25:00", isStopped: true});
-    const [state, dispatch] = useReducer(counterReducer, counterInterval);
+    const [state, dispatch] = useReducer(counterReducer, {countLength: 25, breakLength: 5, seconds: 1500, timer: "25:00", isStopped: true, breaksTurn: false});
 
-    const handlePause = () => {
+    const handlePause = (): void => {
         dispatch({type: 'PAUSE_SESSION'});
     }
 
-    const handleReset = () => {
+    const handleReset = (): void => {
         state.isStopped && dispatch({type: 'RESET_SESSION'});
     }
 
-    const increaseBreak = () => {
+    const increaseBreak = (): void => {
         state.isStopped && dispatch({type: "INCREASE_BREAK"});
     }
 
-    const decreaseBreak = () => {
+    const decreaseBreak = (): void => {
         state.isStopped && dispatch({type: "DECREASE_BREAK"});
     }
 
-    const increaseSession = () => {
+    const increaseSession = (): void => {
         state.isStopped && dispatch({type: "INCREASE_SESSION"});
     }
 
-    const decreaseSession = () => {
+    const decreaseSession = (): void => {
         state.isStopped && dispatch({type: "DECREASE_SESSION"});
     }
 
-    const handleSession = () => {
+    const handleSession = (): void => {
         dispatch({type: "START_SESSION"});
+    }
+
+    const convertToBreak = (): void => {
+        dispatch({type: "BREAK_TURN"});
     }
 
     const data: any = {
@@ -47,6 +50,7 @@ const CounterClock = (): JSX.Element => {
         handlePause,
         handleReset,
         handleSession,
+        convertToBreak,
         state
     }
 
