@@ -1,4 +1,4 @@
-import {useReducer, useState} from "react";
+import {useReducer} from "react";
 import {counterReducer} from "@/reducer/counterReducer";
 import {CounterContext} from "@/context/CounterContext";
 import Header from "@/assets/Header";
