@@ -17,7 +17,7 @@ const SessionCard = (): JSX.Element => {
          }
 
          return () => clearInterval(intervalCountDown);
-     }, [state.isStopped, state.seconds]);
+     }, [state.isStopped, state.seconds, state.timer]);
 
 
     return <div className="border-2 border-white rounded-3xl p-5 text-center">

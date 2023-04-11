@@ -11,15 +11,6 @@ const CounterClock = (): JSX.Element => {
     const [counterInterval, setCounterInterval] = useState({countLength: 25, breakLength: 5, seconds: 1500, timer: "25:00", isStopped: true});
     const [state, dispatch] = useReducer(counterReducer, counterInterval);
 
-     // const handleInterval = (): void => {
-     //     // Convert the current time in minutes to seconds
-     //     const seconds: number = state.countLength * 60;
-     //     // Then format it like MM:SS
-     //     const timer: string = Math.floor(seconds / 60) + ':' + ('0' + Math.floor(seconds % 60)).slice(-2);
-     //     // it's a new state now
-     //     setCounterInterval({...state, seconds: seconds, timer: timer});
-     // }
-
     const handlePause = () => {
         dispatch({type: 'PAUSE_SESSION'});
     }
@@ -60,10 +51,14 @@ const CounterClock = (): JSX.Element => {
     }
 
     return <CounterContext.Provider value={data}>
-        <Header />
-        <Settings />
-        <SessionCard />
-        <Controls />
+        <div className="w-screen h-screen grid place-items-center">
+        <div className="container mx-auto flex flex-col gap-y-10">
+            <Header />
+            <Settings />
+            <SessionCard />
+            <Controls />
+        </div>
+        </div>
     </CounterContext.Provider>
 }
 
