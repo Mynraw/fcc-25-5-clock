@@ -14,9 +14,9 @@ export const counterReducer = (state: any, action: Action) => {
         case 'DECREASE_BREAK':
             return {...state, breakLength: state.breakLength - 1};
         case 'INCREASE_SESSION':
-            return {...state, countLength: state.countLength + 1, seconds: state.seconds + 60, timer: Math.floor((state.seconds + 60) / 60) + ':' + ('0' + Math.floor(state.seconds % 60)).slice(-2)};
+            return {...state, countLength: state.countLength + 1, seconds: state.seconds + 60, timer: Math.floor((state.seconds + 60) / 60) + ':' + ('0' + Math.floor((state.seconds + 60) % 60)).slice(-2)};
         case 'DECREASE_SESSION':
-            return {...state, countLength: state.countLength - 1, seconds: state.seconds - 60, timer: Math.floor((state.seconds - 60) / 60) + ':' + ('0' + Math.floor(state.seconds % 60)).slice(-2)};
+            return {...state, countLength: state.countLength - 1, seconds: state.seconds - 60, timer: Math.floor((state.seconds - 60) / 60) + ':' + ('0' + Math.floor((state.seconds - 60) % 60)).slice(-2)};
         case 'PAUSE_SESSION':
             return {...state, isStopped: !state.isStopped};
         case 'RESET_SESSION':
